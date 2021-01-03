@@ -28,7 +28,10 @@ public class SignUp extends JPanel implements ActionListener {
 	private JButton resetBtn, signUpBtn;
 	private Font title = new Font("빙그레체", Font.BOLD, 30), label = new Font("빙그레체",Font.BOLD,15);
 	
+	UserFrame userFrame = null;
+	
 	public SignUp(UserFrame userFrame) {
+		this.userFrame = userFrame;
 		userFrame.setTitle("Sign Up");
 		try {
 			userFrame.setIconImage(ImageIO.read(new File("images/sign-in.png")));
@@ -103,6 +106,10 @@ public class SignUp extends JPanel implements ActionListener {
 			if(result == true) {
 				User user = new User(txtId.getText(),txtPwd.getText(),txtName.getText(),txtEmail.getText());
 				uc.saveUserData(user);
+				removeAll();
+				add(new Login(userFrame));
+				repaint();
+				
 			} else {
 				JOptionPane.showMessageDialog(null, "회원정보가 존재합니다");
 			}

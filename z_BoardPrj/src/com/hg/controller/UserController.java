@@ -44,27 +44,21 @@ public class UserController {
 
 	//회원가입 시 중복 검사
 	public boolean checkValue(String txtId) {
-		System.out.println("checkValue가 받은 아이디 : " + txtId);
 		//1. 반환할 빈 유저타입 변수
 		boolean result = false;
 		//2. 파일 읽어오기
 		ArrayList<User> list = readUserData();
-		System.out.println("읽어온 내용 : " + list);
 		
 		if (!list.isEmpty()) { //리스트에 저장된 게 있을 때
 			// 3. for문으로 확인
 			for (User ul : list) {
-				if(ul.getId().equals(txtId)) {
-					System.out.println("읽어온 파일에서 꺼낸 id, 입력받은 id 중복 " + ul.getId().equals(txtId) + ", result : " + result);
-					return result = false;}
-				else {
+				if(ul.getId().equals(txtId))
+					return result = false; //중복 있으면 바로 리턴
+				else
 					result = true;
-					System.out.println("읽어온 파일에서 꺼낸 id, 입력받은 id 중복 X, result : " + result);
-				}
 			}
 		} else if(list.isEmpty()) //비었을 때
 			result = true;
-		System.out.println("checkValue 에서 읽어온 파일과 확인 결과 " + result);
 		return result;
 	}
 
