@@ -95,24 +95,27 @@ public class SignUp extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if(e.getSource() == resetBtn) {
+		if (e.getSource() == resetBtn) {
 			txtId.setText("");
 			txtPwd.setText("");
 			txtName.setText("");
 			txtEmail.setText("");
-		} else if(e.getSource() == signUpBtn) {
-			
-			boolean result = uc.checkValue(txtId.getText());
-			
-			if(result == true) {
-				User user = new User(txtId.getText(),txtPwd.getText(),txtName.getText(),txtEmail.getText());
-				uc.saveUserData(user);
-				removeAll();
-				add(new Login(userFrame));
-				repaint();
-				
+		} else if (e.getSource() == signUpBtn) {
+			if (uc.checkValue(txtId.getText(), txtPwd.getText(), txtName.getText(), txtEmail.getText())) {
+				boolean result = uc.checkUser(txtId.getText());
+
+				if (result == true) {
+					User user = new User(txtId.getText(), txtPwd.getText(), txtName.getText(), txtEmail.getText());
+					uc.saveUserData(user);
+					removeAll();
+					add(new Login(userFrame));
+					repaint();
+
+				} else {
+					JOptionPane.showMessageDialog(null, "회원정보가 존재합니다");
+				}
 			} else {
-				JOptionPane.showMessageDialog(null, "회원정보가 존재합니다");
+				JOptionPane.showMessageDialog(null, "빈 칸 없이 입력해주세요");
 			}
 		}
 	}

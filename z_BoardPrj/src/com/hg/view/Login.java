@@ -15,8 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.hg.controller.UserController;
-import com.hg.model.vo.Board;
 import com.hg.model.vo.User;
+import com.hg.view.frame.BoardListFrame;
 
 public class Login extends JPanel {
 
@@ -31,7 +31,8 @@ public class Login extends JPanel {
 	UserController uc = new UserController();
 
 	public Login(JFrame userFrame) {
-		setSize(800, 500);
+		userFrame.setTitle("Log in");
+		//setSize(800, 500);
 		setLayout(null);
 		setBackground(pink);
 

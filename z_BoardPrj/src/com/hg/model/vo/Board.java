@@ -8,17 +8,21 @@ public class Board implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 3762488101320767714L;
-	private int postNo;
+	private static int postNo = 1;
 	private String title;
 	private String content;
 	private String name;
 	private String postingDate;
 	
+	static {
+		postNo++;
+	}
+	
 	public Board() {}
 
 	public Board(int postNo, String title, String content, String name, String postingDate) {
 		super();
-		this.postNo = postNo;
+		Board.postNo = postNo;
 		this.title = title;
 		this.content = content;
 		this.name = name;
@@ -30,7 +34,7 @@ public class Board implements Serializable{
 	}
 
 	public void setPostNo(int postNo) {
-		this.postNo = postNo;
+		Board.postNo = postNo;
 	}
 
 	public String getTitle() {
@@ -117,5 +121,15 @@ public class Board implements Serializable{
 				+ postingDate + "]";
 	}
 	
-	
+	public String getBoardData(int tableIdx) {
+	 switch(tableIdx) {
+	 case 0 : return Integer.toString(postNo);
+	 case 1 : return this.getTitle();
+	 case 2 : return getContent();
+	 case 3 : return getName();
+	 case 4 : return getPostingDate();
+	 default : return "error";
+	 }
+	}
+	 
 }

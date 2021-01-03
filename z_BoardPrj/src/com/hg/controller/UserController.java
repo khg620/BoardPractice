@@ -42,8 +42,18 @@ public class UserController {
 		return user;
 	}
 
+	//회원가입 시 빈칸 체크
+	public boolean checkValue(String id, String pwd, String name, String email) {
+		boolean result = false;
+		if(id.equals("") || pwd.equals("") || name.equals("") || email.equals("")) {
+			result = false;
+		} else
+			result = true;
+		return result;
+	}
+	
 	//회원가입 시 중복 검사
-	public boolean checkValue(String txtId) {
+	public boolean checkUser(String txtId) {
 		//1. 반환할 빈 유저타입 변수
 		boolean result = false;
 		//2. 파일 읽어오기
@@ -85,5 +95,6 @@ public class UserController {
 		return saveList;
 	}
 
+	
 	
 }
