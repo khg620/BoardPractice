@@ -56,7 +56,7 @@ public class UserController {
 			for (User ul : list) {
 				if(ul.getId().equals(txtId)) {
 					System.out.println("읽어온 파일에서 꺼낸 id, 입력받은 id 중복 " + ul.getId().equals(txtId) + ", result : " + result);
-					result = false;}
+					return result = false;}
 				else {
 					result = true;
 					System.out.println("읽어온 파일에서 꺼낸 id, 입력받은 id 중복 X, result : " + result);
