@@ -50,7 +50,7 @@ public class UserController {
 		ArrayList<User> list = readUserData();
 		System.out.println("읽어온 내용 : " + list);
 		
-		if (list != null) {
+		if (!list.isEmpty()) { //리스트에 저장된 게 있을 때
 			// 3. for문으로 확인
 			for (User ul : list) {
 				if(ul.getId().equals(txtId))
@@ -58,7 +58,7 @@ public class UserController {
 				else
 					result = true;
 			}
-		} else if(list == null) 
+		} else if(list.isEmpty()) //비었을 때
 			result = true;
 		System.out.println("checkValue 에서 읽어온 파일 확인" + result);
 		return result;
