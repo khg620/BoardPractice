@@ -68,10 +68,8 @@ public class UserController {
 		ArrayList<User> list = readUserData();
 		//2. 추가하기
 		list.add(user);
-		System.out.println("회원가입 리스트 업뎃 : " + list);
 		//3.Object형으로 형변환
 		ArrayList<Object> saveList = arrayUserToObject(list);
-		System.out.println("회원가입 실행에서 저장된 목록 + 입력받은 user 추가한 리스트" + saveList);
 		//4. 회원 추가
 		fu.saveData(saveList, path + fileName);
 	}

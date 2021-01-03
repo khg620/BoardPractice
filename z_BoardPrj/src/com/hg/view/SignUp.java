@@ -9,13 +9,13 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.hg.controller.UserController;
-import com.hg.dao.FileUtil;
 import com.hg.model.vo.User;
 import com.hg.view.frame.UserFrame;
 
@@ -28,10 +28,11 @@ public class SignUp extends JPanel implements ActionListener {
 	private JButton resetBtn, signUpBtn;
 	private Font title = new Font("ºù±×·¹Ã¼", Font.BOLD, 30), label = new Font("ºù±×·¹Ã¼",Font.BOLD,15);
 	
-	UserFrame userFrame = null;
+	private JFrame userFrame;
 	
-	public SignUp(UserFrame userFrame) {
+	public SignUp(JFrame userFrame) {
 		this.userFrame = userFrame;
+		
 		userFrame.setTitle("Sign Up");
 		try {
 			userFrame.setIconImage(ImageIO.read(new File("images/sign-in.png")));
