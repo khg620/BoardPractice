@@ -97,5 +97,7 @@ public class Login extends JPanel {
 
 			}
 		});
+		
+		setVisible(true);
 	}
 }

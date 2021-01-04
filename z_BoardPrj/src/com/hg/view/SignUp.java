@@ -107,9 +107,10 @@ public class SignUp extends JPanel implements ActionListener {
 				if (result == true) {
 					User user = new User(txtId.getText(), txtPwd.getText(), txtName.getText(), txtEmail.getText());
 					uc.saveUserData(user);
-					removeAll();
-					add(new Login(userFrame));
-					repaint();
+					userFrame.getContentPane().removeAll();
+					userFrame.getContentPane().add(new Login(userFrame));
+					userFrame.repaint();
+					userFrame.setVisible(true); //이거 안 쓰니 로그인 창으로 전환이 잘 안 되네
 
 				} else {
 					JOptionPane.showMessageDialog(null, "회원정보가 존재합니다");
