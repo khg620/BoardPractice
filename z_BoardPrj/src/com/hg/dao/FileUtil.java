@@ -16,7 +16,7 @@ public class FileUtil {
 	String path = ".\\data\\";
 
 	// 1. 데이터 읽기
-	public ArrayList<Object> readData(String text) {
+	public ArrayList<Object> readData(String fileName) {
 		// 담을 ArrayList 준비
 		ArrayList<Object> list = null;
 
@@ -29,7 +29,7 @@ public class FileUtil {
 		System.out.println(tmplist);*/
 
 		// 파일에서 읽어오기
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path + text))) {
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path + fileName))) {
 
 			if ((list = (ArrayList<Object>) ois.readObject()) != null) {
 				return list;
@@ -39,7 +39,7 @@ public class FileUtil {
 
 			File folder = new File(path);
 			folder.mkdirs();
-			File file = new File(path + text);
+			File file = new File(path + fileName);
 			try {
 				file.createNewFile();
 			} catch (IOException e1) {

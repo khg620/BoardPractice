@@ -70,6 +70,9 @@ public class BoardListFrame extends JPanel implements ActionListener {
 		table = new JTable(model);
 		scroll = new JScrollPane(table);
 		
+		//셀 편집 막기
+		model.isCellEditable(row, column);
+		
 		return scroll;
 	}
 	

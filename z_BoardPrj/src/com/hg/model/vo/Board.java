@@ -8,7 +8,7 @@ public class Board implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 3762488101320767714L;
-	private static int postNo = 1;
+	private static int postNo = 0;
 	private String title;
 	private String content;
 	private String name;
@@ -19,6 +19,15 @@ public class Board implements Serializable{
 	}
 	
 	public Board() {}
+	
+	//가데이터 생성해 확인하기 위해
+	public Board(String title, String content, String name, String postingDate) {
+		super();
+		this.title = title;
+		this.content = content;
+		this.name = name;
+		this.postingDate = postingDate;
+	}
 
 	public Board(int postNo, String title, String content, String name, String postingDate) {
 		super();
