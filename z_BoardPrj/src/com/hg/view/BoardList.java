@@ -10,8 +10,6 @@ import javax.swing.JPanel;
 import com.hg.view.frame.BoardListFrame;
 
 public class BoardList extends JPanel {
-	
-	BoardListFrame bf = new BoardListFrame();
 
 	public BoardList(JFrame userFrame) {
 		userFrame.setTitle("°Ô½ÃÆÇ");
@@ -20,6 +18,8 @@ public class BoardList extends JPanel {
 		userFrame.setIconImage(iconImg);
 		
 		setLayout(new BorderLayout());
+		
+		BoardListFrame bf = new BoardListFrame(userFrame);
 		
 		add(bf.getTitlePanel(),"North");
 		add(bf.getTablePanel(), "Center");

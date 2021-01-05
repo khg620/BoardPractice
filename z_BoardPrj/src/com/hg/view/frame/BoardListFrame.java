@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -14,9 +15,11 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import com.hg.controller.BoardController;
+import com.hg.view.Post;
 
 public class BoardListFrame extends JPanel implements ActionListener {
 	
+	JFrame userFrame;
 	JPanel titlePanel, btnPanel;
 	JLabel lblTitle, lblSearch;
 	JTextField txtSearchWord;
@@ -29,6 +32,10 @@ public class BoardListFrame extends JPanel implements ActionListener {
 	Color green = new Color(106, 202, 222), pink = new Color(250, 186, 185);
 	
 	BoardController bc = new BoardController();
+	
+	public BoardListFrame(JFrame userFrame) {
+		this.userFrame = userFrame;
+	}
 	
 	public JPanel getTitlePanel() {
 		titlePanel = new JPanel();
@@ -66,12 +73,14 @@ public class BoardListFrame extends JPanel implements ActionListener {
 		
 		String[] title = bc.getBoardTitle();
 		String[][] data = bc.getBoardData("");
-		model = new DefaultTableModel(data, title);
+		model = new DefaultTableModel(data, title) {//익명클래스
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false; //편집 불가
+			}
+		};
 		table = new JTable(model);
 		scroll = new JScrollPane(table);
-		
-		//셀 편집 막기
-		model.isCellEditable(row, column);
 		
 		return scroll;
 	}
@@ -97,7 +106,10 @@ public class BoardListFrame extends JPanel implements ActionListener {
 		if(e.getSource() == searchBtn) {
 			searchData(txtSearchWord.getText());
 		} else if(e.getSource() == postBtn) {
-			
+			userFrame.getContentPane().removeAll();
+			userFrame.getContentPane().add(new Post(userFrame));
+			userFrame.repaint();
+			userFrame.setVisible(true);
 		}
 	}
 

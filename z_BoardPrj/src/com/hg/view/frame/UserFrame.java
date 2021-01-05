@@ -7,7 +7,7 @@ import com.hg.view.Login;
 public class UserFrame extends JFrame {
 
 	public UserFrame() {
-		setTitle("게시판");
+		//setTitle("게시판");
 		setSize(800,500);
 		setResizable(false);
 		setLocationRelativeTo(null);

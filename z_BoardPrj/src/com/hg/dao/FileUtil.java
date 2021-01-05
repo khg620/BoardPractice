@@ -57,7 +57,7 @@ public class FileUtil {
 	// 2. 데이터 저장
 	public void saveData(ArrayList<Object> list, String text) {
 		System.out.println("FileUtil : 받아온 어레이리스트 : " + list);
-		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(text))) {
+		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path + text))) {
 
 			oos.writeObject(list);
 

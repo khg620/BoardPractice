@@ -26,7 +26,7 @@ public class BoardController {
 			}
 		}
 		//가데이터 생성
-		list.add(new Board("a","aaa","aa","20210101"));
+		//list.add(new Board("a","aaa","aa","20210101"));
 		return list;
 	}
 	
@@ -60,6 +60,24 @@ public class BoardController {
 
 	public String[] getBoardTitle() {
 		return new String[]{"글번호","제목","내용", "작성자","작성날짜"};
+	}
+
+	public boolean savePost(Board Post) {
+		//1. 전체 읽어오기
+		ArrayList<Board> list = readData();
+		//2. 객체 추가하기
+		list.add(Post);
+		//3. 저장하기
+		fu.saveData(BoardToObject(list), fileName);
+		return false;
+	}
+
+	private ArrayList<Object> BoardToObject(ArrayList<Board> list) {
+		ArrayList<Object> resultList = new ArrayList<Object>();
+		for(Board b : list) {
+			resultList.add(b);
+		}
+		return resultList;
 	}
 
 }
