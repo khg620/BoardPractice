@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 import com.hg.controller.BoardController;
 import com.hg.view.Post;
 
-public class BoardListFrame extends JPanel implements ActionListener {
+public class BoardListFrame extends JPanel implements ActionListener, MouseListener {
 	
 	JFrame userFrame;
 	JPanel titlePanel, btnPanel;
@@ -82,6 +84,8 @@ public class BoardListFrame extends JPanel implements ActionListener {
 		table = new JTable(model);
 		scroll = new JScrollPane(table);
 		
+		table.addMouseListener(this);
+		
 		return scroll;
 	}
 	
@@ -121,6 +125,46 @@ public class BoardListFrame extends JPanel implements ActionListener {
 		for(int i = 0; i < searchResult.length; i++) {
 			model.insertRow(0, searchResult[i]);
 		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if(e.getClickCount() > 1) {
+			int col = table.getSelectedColumn(); // 제목열 클릭 시에만 화면전환 할 용도
+			int[] row = table.getSelectedRows(); // 나중에 삭제 기능 추가 시 이용
+			
+			//1열 클릭 시에만 포스팅 화면 열리게
+			if(col == 1) {
+				new Post(userFrame);
+				userFrame.getContentPane().removeAll();
+				userFrame.getContentPane().repaint();
+				userFrame.setVisible(true);
+			}
+		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
